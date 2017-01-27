@@ -25,6 +25,12 @@ public class Echo implements OnInterestCallback, OnRegisterFailed {
         certificateName_ = certificateName;
     }
 
+    public Echo(KeyChain keyChain) {
+        this.keyChain_ = keyChain;
+    }
+
+    ;
+
     public void
     onInterest(Name prefix, Interest interest, Face face, long interestFilterId, InterestFilter filter) {
 

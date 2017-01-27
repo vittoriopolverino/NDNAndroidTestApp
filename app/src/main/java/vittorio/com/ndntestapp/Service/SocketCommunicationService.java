@@ -9,22 +9,20 @@ import android.widget.Toast;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.net.InetAddress;
-import java.net.NetworkInterface;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.net.SocketException;
-import java.util.Enumeration;
 
 import vittorio.com.ndntestapp.SocketHandler;
 
 public class SocketCommunicationService extends Service {
 
     private static final String TAG = SocketCommunicationService.class.getSimpleName();
+    private static final String TEST_CASE_LAUNCHED_FROM = "testLaunchedFrom";
+    private static final String PORT_NUMBER = "portNumber";
+    private static final String TEST_CASE_NAME = "testCaseName";
+    private static final String TEST_CASE_DESCRIPTION = "testCaseDescription";
     private static final String ROLE = "role";
-    private static final String NFD_ADDRESS = "nfdAddress";
-    private static final String CLIENT_ADDRESS = "clientAddress";
-    private static final String CLIENT_THREAD_PORT_NUMBER = "clientThreadPortNumber";
+    private static final String NFD_ADDRESS = "nfdAddress";;
 
 
     private ServerSocket serverSocket;
@@ -91,18 +89,23 @@ public class SocketCommunicationService extends Service {
 
                     //If no message sent from client, this code will block the program
                     messageFromClient = dataInputStream.readUTF();
-                    String[] splitStr = messageFromClient.split("\\s+");
-                    String role = splitStr[0];
-                    String nfdAddress = splitStr[1];
+                    System.out.println(messageFromClient);
+                    String[] splitStr = messageFromClient.split("\\|");
+                    String testCaseLaunchedFrom = splitStr[0];
+                    String portNumber = splitStr[1];
+                    String testName = splitStr[2];
+                    String testDescription = splitStr[3];
+                    String role = splitStr[4];
+                    String nfdAddress = splitStr[5];
 
                     count++;
-
                     System.out.println(count + " " + messageFromClient);
 
                     // send reference address to main activity
                     new SocketHandler().setSocket(socket);
 
-                    sendMessageToActivity(role, nfdAddress,socket.getInetAddress().toString(), socket.getPort());
+                    //socket.getInetAddress().toString(), socket.getPort()
+                    sendMessageToActivity(testCaseLaunchedFrom, portNumber, testName, testDescription, role, nfdAddress);
 
                 }
             } catch (IOException e) {
@@ -139,13 +142,15 @@ public class SocketCommunicationService extends Service {
         }
     }
 
-    private void sendMessageToActivity(String pRole, String pNfdAddress, String pClientAddress, int pClientPortNumber) {
+    private void sendMessageToActivity(String pTestCaseLaunchedFrom, String pPortNumber, String pTestName, String pTestDescription, String pRole, String pNfdAddress) {
         Intent broadcastIntent = new Intent();
         broadcastIntent.setAction("ServiceToActivityAction");
+        broadcastIntent.putExtra(TEST_CASE_LAUNCHED_FROM, pTestCaseLaunchedFrom);
+        broadcastIntent.putExtra(PORT_NUMBER, pPortNumber);
+        broadcastIntent.putExtra(TEST_CASE_NAME, pTestName);
+        broadcastIntent.putExtra(TEST_CASE_DESCRIPTION, pTestDescription);
         broadcastIntent.putExtra(ROLE, pRole);
         broadcastIntent.putExtra(NFD_ADDRESS, pNfdAddress);
-        broadcastIntent.putExtra(CLIENT_ADDRESS, pClientAddress);
-        broadcastIntent.putExtra(CLIENT_THREAD_PORT_NUMBER, pClientPortNumber);
         sendBroadcast(broadcastIntent);
     }
 

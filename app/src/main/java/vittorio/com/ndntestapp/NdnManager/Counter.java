@@ -23,9 +23,9 @@ public class Counter implements OnData, OnTimeout {
     public void onData(Interest interest, Data data) {
         ++mCallbackCount;
         mFeedback.append("Got data packet with name " + " "  + data.getName().toUri())
-                .append('\n')
+                .append(' ')
                 .append(data.getContent().toString())
-                .append('\n');
+                .append(' ');
     }
 
     public void onTimeout(Interest interest) {

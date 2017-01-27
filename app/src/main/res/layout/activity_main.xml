@@ -30,49 +30,114 @@
             android:textColor="@color/colorPrimary"/>
 
         <TextView
-            android:id="@+id/clientAddressLabel"
+            android:id="@+id/testCaseLaunchedFrom"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/serviceStatusLabel"
             android:layout_marginRight="5dp"
             android:layout_marginTop="30dp"
-            android:text="REQUEST FROM: "
+            android:text="TEST CASE LAUNCHED FROM: "
             android:textColor="@android:color/background_dark"/>
 
         <TextView
-            android:id="@+id/clientAddress"
+            android:id="@+id/address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/serviceStatusLabel"
             android:layout_marginTop="30dp"
-            android:layout_toRightOf="@+id/clientAddressLabel"
+            android:layout_toRightOf="@+id/testCaseLaunchedFrom"
             android:textColor="@color/colorPrimary"/>
 
-
         <TextView
-            android:id="@+id/actionTypeLabel"
+            android:id="@+id/testCaseNameLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/clientAddressLabel"
+            android:layout_below="@id/testCaseLaunchedFrom"
             android:layout_marginRight="5dp"
             android:layout_marginTop="30dp"
-            android:text="ACTION TYPE: "
+            android:text="TEST NAME: "
             android:textColor="@android:color/background_dark"/>
 
         <TextView
-            android:id="@+id/actionType"
+            android:id="@+id/testCaseName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/clientAddressLabel"
+            android:layout_below="@+id/testCaseLaunchedFrom"
             android:layout_marginTop="30dp"
-            android:layout_toRightOf="@+id/actionTypeLabel"
+            android:layout_toRightOf="@+id/testCaseNameLabel"
+            android:textColor="@color/colorPrimary"/>
+
+        <TextView
+            android:id="@+id/testCaseDescriptionLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/testCaseNameLabel"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="30dp"
+            android:text="TEST DESCRIPTION: "
+            android:textColor="@android:color/background_dark"/>
+
+        <TextView
+            android:id="@+id/testCaseDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/testCaseNameLabel"
+            android:layout_marginTop="30dp"
+            android:layout_toRightOf="@+id/testCaseDescriptionLabel"
+            android:textColor="@color/colorPrimary"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:id="@+id/divider"
+            android:layout_height="4dp"
+            android:layout_marginTop="16dp"
+            android:layout_below="@id/testCaseDescription"
+            android:background="@android:color/darker_gray" android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"/>
+
+        <TextView
+            android:id="@+id/roleLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/divider"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="16dp"
+            android:text="ROLE: "
+            android:textColor="@android:color/background_dark"/>
+
+        <TextView
+            android:id="@+id/role"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/divider"
+            android:layout_marginTop="16dp"
+            android:layout_toRightOf="@+id/roleLabel"
+            android:textColor="@color/colorPrimary"/>
+
+        <TextView
+            android:id="@+id/nfdAddressLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/roleLabel"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="30dp"
+            android:text="NFD ADDRESS: "
+            android:textColor="@android:color/background_dark"/>
+
+        <TextView
+            android:id="@+id/nfdAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_below="@id/roleLabel"
+            android:layout_toRightOf="@id/nfdAddressLabel"
             android:textColor="@color/colorPrimary"/>
 
         <TextView
             android:id="@+id/ndnResponseLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/actionTypeLabel"
+            android:layout_below="@id/nfdAddressLabel"
             android:layout_marginRight="5dp"
             android:layout_marginTop="30dp"
             android:text="NDN response: "
@@ -83,27 +148,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
-            android:layout_below="@id/actionTypeLabel"
+            android:layout_below="@id/nfdAddressLabel"
             android:layout_toRightOf="@id/ndnResponseLabel"
             android:textColor="@color/colorPrimary"/>
 
         <TextView
-            android:id="@+id/msgToClientLabel"
+            android:id="@+id/msgToRobotLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/ndnResponse"
             android:layout_marginRight="5dp"
             android:layout_marginTop="30dp"
-            android:text="Response to client: "
+            android:text="RESPONSE TO ROBOT: "
             android:textColor="@android:color/background_dark"/>
 
         <TextView
-            android:id="@+id/msgToClient"
+            android:id="@+id/msgToRobot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/ndnResponse"
             android:layout_marginTop="30dp"
-            android:layout_toRightOf="@id/msgToClientLabel"
+            android:layout_toRightOf="@id/msgToRobotLabel"
             android:textColor="@color/colorPrimary"/>
 
     </RelativeLayout>
